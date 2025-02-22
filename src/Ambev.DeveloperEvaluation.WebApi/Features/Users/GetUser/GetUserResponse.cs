@@ -36,4 +36,7 @@ public class GetUserResponse
     /// The current status of the user
     /// </summary>
     public UserStatus Status { get; set; }
+    
+
+
 }

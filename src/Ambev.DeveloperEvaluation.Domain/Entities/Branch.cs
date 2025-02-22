@@ -1,0 +1,21 @@
+using Ambev.DeveloperEvaluation.Domain.Common;
+using System.Security.Principal;
+
+namespace Ambev.DeveloperEvaluation.Domain.Entities
+{
+    /// <summary>
+    /// Represents a branch in the system.
+    /// </summary>
+    public class Branch : BaseEntity
+    {
+        /// <summary>
+        /// Gets or sets the name of the branch.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the address of the branch.
+        /// </summary>
+        public string Address { get; set; }
+    }
+}

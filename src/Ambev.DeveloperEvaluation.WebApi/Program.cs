@@ -20,6 +20,10 @@ public class Program
         {
             Log.Information("Starting web application");
 
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .CreateLogger();    
+
             WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
             builder.AddDefaultLogging();
 

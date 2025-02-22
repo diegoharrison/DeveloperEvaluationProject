@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -9,6 +9,13 @@
     <DockerfileContext>..\..</DockerfileContext>
     <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Features\Branches\UpdateUser\**" />
+    <Content Remove="Features\Branches\UpdateUser\**" />
+    <EmbeddedResource Remove="Features\Branches\UpdateUser\**" />
+    <None Remove="Features\Branches\UpdateUser\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.4.1" />
@@ -25,6 +32,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\SaleItems\ListUsers\" />
+    <Folder Include="Features\SaleItems\UpdateUser\" />
+    <Folder Include="Features\Customers\ListUsers\" />
+    <Folder Include="Features\Customers\UpdateUser\" />
+    <Folder Include="Features\Sales\ListUsers\" />
+    <Folder Include="Features\Branches\ListUsers\" />
     <Folder Include="Features\Users\GetUser\" />
     <Folder Include="Features\Users\DeleteUser\" />
     <Folder Include="Features\Users\ListUsers\" />
