@@ -35,34 +35,6 @@ public class SaleItemController : BaseController
     }
 
     /// <summary>
-    /// Creates a new sale item
-    /// </summary>
-    /// <param name="request">The sale item creation request</param>
-    /// <param name="cancellationToken">Cancellation token</param>
-    /// <returns>The created sale item details</returns>
-    [HttpPost]
-    [ProducesResponseType(typeof(ApiResponseWithData<CreateSaleItemResponse>), StatusCodes.Status201Created)]
-    [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> CreateSaleItem([FromBody] CreateSaleItemRequest request, CancellationToken cancellationToken)
-    {
-        var validator = new CreateSaleItemRequestValidator();
-        var validationResult = await validator.ValidateAsync(request, cancellationToken);
-
-        if (!validationResult.IsValid)
-            return BadRequest(validationResult.Errors);
-
-        var command = _mapper.Map<CreateSaleItemCommand>(request);
-        var response = await _mediator.Send(command, cancellationToken);
-
-        return Created(string.Empty, new ApiResponseWithData<CreateSaleItemResponse>
-        {
-            Success = true,
-            Message = "Sale item created successfully",
-            Data = _mapper.Map<CreateSaleItemResponse>(response)
-        });
-    }
-
-    /// <summary>
     /// Retrieves a sale item by its ID
     /// </summary>
     /// <param name="id">The unique identifier of the sale item</param>
@@ -91,6 +63,34 @@ public class SaleItemController : BaseController
             Data = _mapper.Map<GetSaleItemResponse>(response)
         });
     }
+
+    /// <summary>
+    /// Creates a new sale item
+    /// </summary>
+    /// <param name="request">The sale item creation request</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>The created sale item details</returns>
+    [HttpPost]
+    [ProducesResponseType(typeof(ApiResponseWithData<CreateSaleItemResponse>), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> CreateSaleItem([FromBody] CreateSaleItemRequest request, CancellationToken cancellationToken)
+    {
+        var validator = new CreateSaleItemRequestValidator();
+        var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+        if (!validationResult.IsValid)
+            return BadRequest(validationResult.Errors);
+
+        var command = _mapper.Map<CreateSaleItemCommand>(request);
+        var response = await _mediator.Send(command, cancellationToken);
+
+        return Created(string.Empty, new ApiResponseWithData<CreateSaleItemResponse>
+        {
+            Success = true,
+            Message = "Sale item created successfully",
+            Data = _mapper.Map<CreateSaleItemResponse>(response)
+        });
+    }    
 
     /// <summary>
     /// Updates an existing sale item
@@ -133,7 +133,7 @@ public class SaleItemController : BaseController
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> DeleteSaleItem([FromRoute] Guid id, CancellationToken cancellationToken)
-    {
+    {   
         var request = new DeleteSaleItemRequest { Id = id };
         var validator = new DeleteSaleItemRequestValidator();
         var validationResult = await validator.ValidateAsync(request, cancellationToken);

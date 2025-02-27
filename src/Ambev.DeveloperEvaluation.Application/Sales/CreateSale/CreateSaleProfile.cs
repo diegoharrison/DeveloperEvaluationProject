@@ -7,10 +7,8 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
     {
         public CreateSaleProfile()
         {
-            CreateMap<Sale, CreateSaleResult>()
-                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.Items.Sum(item => item.TotalItemAmount)))
-                .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Customer.Name))
-                .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Branch.Name));
+            CreateMap<CreateSaleCommand, Sale>();
+            CreateMap<Sale, CreateSaleResult>();
         }
     }
 }

@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <Compile Remove="Migrations\20241014011203_InitialMigrations.cs\**" />
+    <Compile Remove="Migrations\20241014011203_InitialMigrations.Designer.cs\**" />
+    <Compile Remove="Migrations\DefaultContextModelSnapshot.cs\**" />
+    <EmbeddedResource Remove="Migrations\20241014011203_InitialMigrations.cs\**" />
+    <EmbeddedResource Remove="Migrations\20241014011203_InitialMigrations.Designer.cs\**" />
+    <EmbeddedResource Remove="Migrations\DefaultContextModelSnapshot.cs\**" />
+    <None Remove="Migrations\20241014011203_InitialMigrations.cs\**" />
+    <None Remove="Migrations\20241014011203_InitialMigrations.Designer.cs\**" />
+    <None Remove="Migrations\DefaultContextModelSnapshot.cs\**" />
   </ItemGroup>
 
   <ItemGroup>

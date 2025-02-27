@@ -3,7 +3,7 @@
 namespace Ambev.DeveloperEvaluation.Application.Sales.UpdateSale;
 
 /// <summary>
-/// Validator for UpdateSaleCommand
+/// Validator for UpdateSaleRequest
 /// </summary>
 public class UpdateSaleValidator : AbstractValidator<UpdateSaleCommand>
 {
